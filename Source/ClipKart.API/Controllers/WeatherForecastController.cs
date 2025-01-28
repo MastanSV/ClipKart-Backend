@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ClipKart.Controllers
+namespace ClipKart.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

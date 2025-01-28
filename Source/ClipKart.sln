@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipKart.API", "ClipKart.API\ClipKart.API.csproj", "{20DCCC44-FDAF-408C-99F4-94569B9A2FDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AF6D0C0D-D57D-4A8A-9088-09F5758F62B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{BF6BA84E-5258-4484-9C0D-B8B58A8A8476}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClipKart.API", "ClipKart.API", "{761A234B-9522-41BD-9CB1-AC39AA28B643}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClipKart.Core", "ClipKart.Core", "{D7C43A68-528C-42F5-990A-08E90ECE9900}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipKart.Core", "ClipKart.Core\ClipKart.Core.csproj", "{BDA28EB9-1B88-492A-82AE-BF50398E6D1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20DCCC44-FDAF-408C-99F4-94569B9A2FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DCCC44-FDAF-408C-99F4-94569B9A2FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DCCC44-FDAF-408C-99F4-94569B9A2FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DCCC44-FDAF-408C-99F4-94569B9A2FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA28EB9-1B88-492A-82AE-BF50398E6D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA28EB9-1B88-492A-82AE-BF50398E6D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA28EB9-1B88-492A-82AE-BF50398E6D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA28EB9-1B88-492A-82AE-BF50398E6D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{20DCCC44-FDAF-408C-99F4-94569B9A2FDC} = {761A234B-9522-41BD-9CB1-AC39AA28B643}
+		{761A234B-9522-41BD-9CB1-AC39AA28B643} = {BF6BA84E-5258-4484-9C0D-B8B58A8A8476}
+		{D7C43A68-528C-42F5-990A-08E90ECE9900} = {BF6BA84E-5258-4484-9C0D-B8B58A8A8476}
+		{BDA28EB9-1B88-492A-82AE-BF50398E6D1F} = {D7C43A68-528C-42F5-990A-08E90ECE9900}
+	EndGlobalSection
+EndGlobal

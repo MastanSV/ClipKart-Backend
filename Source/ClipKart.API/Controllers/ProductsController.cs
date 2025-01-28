@@ -1,7 +1,8 @@
-﻿using ClipKart.Models;
+﻿
+using ClipKart.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ClipKart.Controllers
+namespace ClipKart.API.Controllers
 {
     [ApiController]
     [Route("Products")]
@@ -10,7 +11,7 @@ namespace ClipKart.Controllers
         [HttpGet]
         public List<Product> Index()
         {
-            var products = new List<Product> { new Product() { Name = "Dairy", Description = "Write you fascinating things daily", Category = "Stationary", Price = 85 },
+            var products = new List<Product> { new Product() { Name = "Dairy", Description = "Write your fascinating things daily", Category = "Stationary", Price = 85 },
             new Product{ Name="iPhone 12 mini", Description="Get closer and closer with your loved ones", Category="Tech/Electronics",Price=39000} };
             return products;
         }
