@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClipKart.Core\ClipKart.Core.csproj" />
+    <ProjectReference Include="..\Clipkart.Infrastructure\Clipkart.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

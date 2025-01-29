@@ -1,4 +1,5 @@
 ﻿
+using ClipKart.Core.Interfaces.Product;
 using ClipKart.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,11 @@ namespace ClipKart.API.Controllers
     [Route("Products")]
     public class ProductsController : ControllerBase
     {
+        public ProductsController(IProductService productService)
+        {
+
+        }
+
         [HttpGet]
         public List<Product> Index()
         {

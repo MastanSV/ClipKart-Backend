@@ -1,5 +1,7 @@
+using Clipkart.Infrastructure.DbContexts;
 using ClipKart.Core.Helpers.UserLogin;
 using ClipKart.Core.Interfaces.UserLogin;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IUserLoginCrendentialValidator, UserLoginCredentialsValidator>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
