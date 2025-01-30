@@ -1,5 +1,5 @@
-﻿using Clipkart.Infrastructure.Interfaces;
-using ClipKart.Core.Interfaces.Product;
+﻿
+using ClipKart.Core.Interfaces.Products;
 using ClipKart.Core.Models;
 
 namespace ClipKart.Core.Services

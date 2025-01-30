@@ -28,20 +28,6 @@ namespace ClipKart.API.Controllers
             return BadRequest("User Login Failed.");
         }
 
-        [HttpGet]
-        [ActionName("ById")]
-        public IActionResult GetById(int id)
-        {
-            return Content($"ID: {id}");
-        }
-
-        [HttpGet]
-        [ActionName("ByName")]
-        public IActionResult GetById(string name)
-        {
-            return Content($"Name: {name}");
-        }
-
 
         private bool ValidateCredentials(User user)
         {

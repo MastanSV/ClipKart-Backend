@@ -1,6 +1,9 @@
 using Clipkart.Infrastructure.DbContexts;
+using Clipkart.Infrastructure.Repository;
 using ClipKart.Core.Helpers.UserLogin;
+using ClipKart.Core.Interfaces.Products;
 using ClipKart.Core.Interfaces.UserLogin;
+using ClipKart.Core.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +15,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IUserLoginCrendentialValidator, UserLoginCredentialsValidator>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ClipKart.API")));
 
 var app = builder.Build();
 
