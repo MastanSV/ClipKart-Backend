@@ -3,6 +3,7 @@ using Clipkart.Infrastructure.Repository;
 using ClipKart.Core.Helpers.UserLogin;
 using ClipKart.Core.Interfaces.Products;
 using ClipKart.Core.Interfaces.UserLogin;
+using ClipKart.Core.Models;
 using ClipKart.Core.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

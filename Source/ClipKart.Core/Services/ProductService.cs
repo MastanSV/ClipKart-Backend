@@ -15,7 +15,7 @@ namespace ClipKart.Core.Services
 
         public void AddProduct(Product product)
         {
-            _productRepository.CreateProductAsync(product);
+            _productRepository.CreateProduct(product);
         }
 
     }

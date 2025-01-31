@@ -1,6 +1,7 @@
 ﻿using Clipkart.Infrastructure.DbContexts;
 using ClipKart.Core.Interfaces.Products;
 using ClipKart.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Clipkart.Infrastructure.Repository
 {
@@ -13,10 +14,10 @@ namespace Clipkart.Infrastructure.Repository
             _context = context ?? throw new ArgumentException(nameof(context));
         }
 
-        public async Task CreateProductAsync(Product product)
+        public void CreateProduct(Product product)
         {
-            await _context.Products.AddAsync(product);
-            await _context.SaveChangesAsync();
+            _context.Products.Add(product);
+            _context.SaveChanges();
         }
     }
 }
