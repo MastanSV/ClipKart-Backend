@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ClipKart.API.Controllers
 {
     [ApiController]
-    [Route("Products")]
+    [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private IProductService _productService;
@@ -15,19 +15,19 @@ namespace ClipKart.API.Controllers
             _productService = productService;
         }
 
-        [HttpGet]
-        public List<Product> Index()
-        {
-            var products = new List<Product> { new Product() { Name = "Dairy", Description = "Write your fascinating things daily", Category = "Stationary", Price = 85 },
-            new Product{ Name="iPhone 12 mini", Description="Get closer and closer with your loved ones", Category="Tech/Electronics",Price=39000} };
-            return products;
-        }
-
         [HttpPost]
-        public IActionResult Add(Product product)
+        [Route("Create")]
+        public IActionResult Create(Product product)
         {
             _productService.AddProduct(product);
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("GetProducts")]
+        public List<Product> GetProducts()
+        {
+            return _productService.GetProducts();
         }
     }
 }

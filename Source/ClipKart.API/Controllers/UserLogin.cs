@@ -1,24 +1,30 @@
 ﻿
 using ClipKart.Core.Interfaces.UserLogin;
 using ClipKart.Core.Models;
+using ClipKart.Core.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ClipKart.API.Controllers
 {
     [ApiController]
-    [Route("Login")]
+    [Route("api/[controller]")]
     public class UserLogin : ControllerBase
     {
         private IUserLoginCrendentialValidator _credentialValidator;
+        private IUserLoginService _userLoginService;
 
-        public UserLogin(IUserLoginCrendentialValidator credentialValidator)
+        public UserLogin(IUserLoginCrendentialValidator credentialValidator, IUserLoginService userLoginService)
         {
             _credentialValidator = credentialValidator;
+            _userLoginService = userLoginService;
         }
 
         [HttpPost]
+        [Route("Login")]
         public IActionResult Login(User user)
         {
+            _userLoginService.VerifyLogin(user);
             bool result = _credentialValidator.Validate(user);
             if ((result))
             {
@@ -28,14 +34,12 @@ namespace ClipKart.API.Controllers
             return BadRequest("User Login Failed.");
         }
 
-
-        private bool ValidateCredentials(User user)
+        [HttpPost]
+        [Route("VerifyLogin")]
+        public bool VerifyLogin(User user)
         {
-            if(user.UserName == "Mastan" && user.Password == "Vali")
-            {
-                return true;
-            }
-            return false;
+            _userLoginService.VerifyLogin(user);
+            return true;
         }
     }
 }

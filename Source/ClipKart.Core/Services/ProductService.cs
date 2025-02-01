@@ -18,5 +18,10 @@ namespace ClipKart.Core.Services
             _productRepository.CreateProduct(product);
         }
 
+        public List<Product> GetProducts()
+        {
+            return _productRepository.GetProducts();
+        }
+
     }
 }

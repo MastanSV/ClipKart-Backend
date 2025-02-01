@@ -19,5 +19,10 @@ namespace Clipkart.Infrastructure.Repository
             _context.Products.Add(product);
             _context.SaveChanges();
         }
+
+        public List<Product> GetProducts()
+        {
+            return _context.Products.ToList();
+        }
     }
 }
