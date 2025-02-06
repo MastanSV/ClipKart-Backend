@@ -22,6 +22,16 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ClipKart.API")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowClipKartApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") 
+              .AllowAnyMethod()                    
+              .AllowAnyHeader()                    
+              .AllowCredentials();                 
+    });
+});
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -29,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowClipKartApp");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -25,9 +25,10 @@ namespace ClipKart.API.Controllers
 
         [HttpGet]
         [Route("GetProducts")]
-        public List<Product> GetProducts()
+        public IActionResult GetProducts()
         {
-            return _productService.GetProducts();
+            var products = _productService.GetProducts();
+            return Ok(products);
         }
     }
 }
