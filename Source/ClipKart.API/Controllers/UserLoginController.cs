@@ -9,12 +9,12 @@ namespace ClipKart.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserLogin : ControllerBase
+    public class UserLoginController : ControllerBase
     {
         private IUserLoginCrendentialValidator _credentialValidator;
         private IUserLoginService _userLoginService;
 
-        public UserLogin(IUserLoginCrendentialValidator credentialValidator, IUserLoginService userLoginService)
+        public UserLoginController(IUserLoginCrendentialValidator credentialValidator, IUserLoginService userLoginService)
         {
             _credentialValidator = credentialValidator;
             _userLoginService = userLoginService;
@@ -24,7 +24,6 @@ namespace ClipKart.API.Controllers
         [Route("Login")]
         public IActionResult Login(User user)
         {
-            _userLoginService.VerifyLogin(user);
             bool result = _credentialValidator.Validate(user);
             if ((result))
             {

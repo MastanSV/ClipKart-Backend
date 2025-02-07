@@ -16,6 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IUserLoginCrendentialValidator, UserLoginCredentialsValidator>();
+builder.Services.AddSingleton<IUserLoginService, UserLoginService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 

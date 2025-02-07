@@ -22,7 +22,7 @@ namespace ClipKart.Core.Helpers.UserLogin
 
         private bool IsUserCredentialsValid(User user)
         {
-            if (user.UserName == "Mastan" && user.Password == "Vali")
+            if (user.UserName == "mastanvali157@gmail.com" && user.Password == "abcdefghi")
             {
                 return true;
             }

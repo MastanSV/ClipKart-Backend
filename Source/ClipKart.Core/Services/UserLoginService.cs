@@ -11,7 +11,7 @@ namespace ClipKart.Core.Services
         }
         public bool VerifyLogin(User user)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
