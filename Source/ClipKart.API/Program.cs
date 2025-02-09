@@ -1,13 +1,7 @@
 using System.Text;
 using Clipkart.Infrastructure.DbContexts;
-using Clipkart.Infrastructure.Repository;
 using ClipKart.API.Extensions;
 using ClipKart.Core.Constants;
-using ClipKart.Core.Helpers.UserLogin;
-using ClipKart.Core.Interfaces.Products;
-using ClipKart.Core.Interfaces.UserLogin;
-using ClipKart.Core.Models;
-using ClipKart.Core.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -37,6 +31,20 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var token = context.Request.Cookies[HelperConstants.JWT];
+
+            if(!string.IsNullOrEmpty(token))
+            {
+                context.Token = token;
+            }
+
+            return Task.CompletedTask;
+        }
+    };
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,

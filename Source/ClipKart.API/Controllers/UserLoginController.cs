@@ -3,9 +3,7 @@ using ClipKart.Core.Constants;
 using ClipKart.Core.Interfaces.Common;
 using ClipKart.Core.Interfaces.UserLogin;
 using ClipKart.Core.Models;
-using ClipKart.Core.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ClipKart.API.Controllers
 {
@@ -32,7 +30,16 @@ namespace ClipKart.API.Controllers
             if ((result))
             {
                 var token = _jwtTokenGenerator.Generate("1", UserRoles.Admin);
-                return Ok(new {Token = token});
+
+                Response.Cookies.Append(HelperConstants.JWT, token, new CookieOptions
+                { 
+                    HttpOnly = true, 
+                    Secure = true, 
+                    SameSite = SameSiteMode.None, 
+                    Expires = DateTime.UtcNow.AddMinutes(20) 
+                });
+
+                return Ok(new { message = "Logged in successfully."});
             }
 
             return BadRequest("User Login Failed.");

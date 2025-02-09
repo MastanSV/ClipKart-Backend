@@ -1,6 +1,7 @@
 ﻿
 using ClipKart.Core.Interfaces.Products;
 using ClipKart.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClipKart.API.Controllers
@@ -23,12 +24,13 @@ namespace ClipKart.API.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpGet]
         [Route("GetProducts")]
         public IActionResult GetProducts()
         {
             var products = _productService.GetProducts();
-            return Ok(products);
+            return Ok(new {message = "This is protected data!", data = products});
         }
     }
 }

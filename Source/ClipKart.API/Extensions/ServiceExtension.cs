@@ -5,8 +5,6 @@ using ClipKart.Core.Interfaces.Common;
 using ClipKart.Core.Interfaces.Products;
 using ClipKart.Core.Interfaces.UserLogin;
 using ClipKart.Core.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 
 namespace ClipKart.API.Extensions
 {
