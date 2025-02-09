@@ -5,7 +5,7 @@ using ClipKart.Core.Models;
 
 namespace Clipkart.Infrastructure.Repository
 {
-    internal class UserLoginRepository : IUserLoginRepository
+    public class UserLoginRepository : IUserLoginRepository
     {
         private ApplicationDbContext _context;
 

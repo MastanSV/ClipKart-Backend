@@ -1,4 +1,6 @@
 ﻿
+using ClipKart.Core.Constants;
+using ClipKart.Core.Interfaces.Common;
 using ClipKart.Core.Interfaces.UserLogin;
 using ClipKart.Core.Models;
 using ClipKart.Core.Services;
@@ -13,11 +15,13 @@ namespace ClipKart.API.Controllers
     {
         private IUserLoginCrendentialValidator _credentialValidator;
         private IUserLoginService _userLoginService;
+        private IJWTTokenGenerator _jwtTokenGenerator;
 
-        public UserLoginController(IUserLoginCrendentialValidator credentialValidator, IUserLoginService userLoginService)
+        public UserLoginController(IUserLoginCrendentialValidator credentialValidator, IUserLoginService userLoginService, IJWTTokenGenerator jwtTokenGenerator)
         {
             _credentialValidator = credentialValidator;
             _userLoginService = userLoginService;
+            _jwtTokenGenerator = jwtTokenGenerator;
         }
 
         [HttpPost]
@@ -27,7 +31,8 @@ namespace ClipKart.API.Controllers
             bool result = _credentialValidator.Validate(user);
             if ((result))
             {
-                return Ok("User Login Successful.");
+                var token = _jwtTokenGenerator.Generate("1", UserRoles.Admin);
+                return Ok(new {Token = token});
             }
 
             return BadRequest("User Login Failed.");
