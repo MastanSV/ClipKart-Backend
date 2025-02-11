@@ -22,8 +22,7 @@ namespace ClipKart.API.Controllers
             _jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        [HttpPost]
-        [Route("Login")]
+        [HttpPost("Login")]
         public IActionResult Login(User user)
         {
             if(!ModelState.IsValid)
@@ -50,8 +49,7 @@ namespace ClipKart.API.Controllers
             return BadRequest("User Login Failed.");
         }
 
-        [HttpPost]
-        [Route("VerifyLogin")]
+        [HttpPost("VerifyLogin")]
         public bool VerifyLogin(User user)
         {
             _userLoginService.VerifyLogin(user);
