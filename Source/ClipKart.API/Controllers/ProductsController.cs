@@ -17,20 +17,19 @@ namespace ClipKart.API.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
-        public IActionResult Create(Product product)
+        [Route("Add")]
+        public IActionResult Add(Product product)
         {
             _productService.AddProduct(product);
             return Ok();
         }
 
-        [Authorize]
         [HttpGet]
         [Route("GetProducts")]
         public IActionResult GetProducts()
         {
             var products = _productService.GetProducts();
-            return Ok(new {message = "This is protected data!", data = products});
+            return Ok(new {message = "This is protected data!", products = products});
         }
     }
 }

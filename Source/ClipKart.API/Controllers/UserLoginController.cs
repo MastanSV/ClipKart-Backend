@@ -26,6 +26,11 @@ namespace ClipKart.API.Controllers
         [Route("Login")]
         public IActionResult Login(User user)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest("Validation failed.!");
+            }
+
             bool result = _credentialValidator.Validate(user);
             if ((result))
             {
