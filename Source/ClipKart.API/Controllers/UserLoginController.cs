@@ -23,7 +23,7 @@ namespace ClipKart.API.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login(User user)
+        public IActionResult Login([FromBody] User user)
         {
             if(!ModelState.IsValid)
             {
