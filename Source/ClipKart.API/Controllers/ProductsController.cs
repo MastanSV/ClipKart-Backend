@@ -16,16 +16,14 @@ namespace ClipKart.API.Controllers
             _productService = productService;
         }
 
-        [HttpPost]
-        [Route("Add")]
+        [HttpPost("Add")]
         public IActionResult Add(Product product)
         {
             _productService.AddProduct(product);
             return Ok();
         }
 
-        [HttpGet]
-        [Route("GetProducts")]
+        [HttpGet("GetProducts")]
         public IActionResult GetProducts()
         {
             var products = _productService.GetProducts();
