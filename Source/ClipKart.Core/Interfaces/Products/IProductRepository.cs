@@ -8,5 +8,7 @@ namespace ClipKart.Core.Interfaces.Products
         void CreateProduct(Product product);
 
         List<Product> GetProducts();
+
+        List<Product> GetPaginatedProducts(int pageSize, int pageIndex);
     }
 }

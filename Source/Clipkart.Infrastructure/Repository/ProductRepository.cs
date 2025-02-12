@@ -24,5 +24,11 @@ namespace Clipkart.Infrastructure.Repository
         {
             return _context.Products.ToList();
         }
+
+        public List<Product> GetPaginatedProducts(int pageSize, int pageIndex)
+        {
+            int skipSize = (pageIndex - 1) * pageSize;
+            return _context.Products.OrderBy(product => product.Id).Skip(skipSize).Take(pageSize).ToList();
+        }
     }
 }

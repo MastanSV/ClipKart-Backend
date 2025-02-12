@@ -29,5 +29,12 @@ namespace ClipKart.API.Controllers
             var products = _productService.GetProducts();
             return Ok(new {message = "This is protected data!", products = products});
         }
+
+        [HttpGet("GetProducts/{pageSize}/{pageIndex}")]
+        public IActionResult GetPaginationData(int pageSize, int pageIndex)
+        {
+            var products = _productService.GetPaginatedProducts(pageSize, pageIndex);
+            return Ok(new { message = $"Got paginated data successfully. page-size={pageSize}, page-index={pageIndex}", products = products });
+        }
     }
 }
