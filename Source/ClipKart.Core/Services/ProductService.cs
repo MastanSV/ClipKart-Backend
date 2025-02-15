@@ -28,5 +28,19 @@ namespace ClipKart.Core.Services
             return _productRepository.GetPaginatedProducts(pageSize, pageIndex);
         }
 
+        public int GetProductsCount()
+        {
+            return _productRepository.GetProductsCount();
+        }
+
+        public int GetSearchMatchingProductsCount(string searchText)
+        {
+            return _productRepository.GetSearchMatchingProductsCount(searchText);
+        }
+
+        public List<Product> GetProductsBasedOnSearch(string searchText, int pageSize, int pageIndex)
+        {
+            return _productRepository.GetProductsBasedOnSearch(searchText, pageSize, pageIndex);
+        }
     }
 }

@@ -27,8 +27,30 @@ namespace Clipkart.Infrastructure.Repository
 
         public List<Product> GetPaginatedProducts(int pageSize, int pageIndex)
         {
-            int skipSize = (pageIndex - 1) * pageSize;
+            int skipSize = CalculateSkipSize(pageSize, pageIndex);
             return _context.Products.OrderBy(product => product.Id).Skip(skipSize).Take(pageSize).ToList();
+        }
+
+        public int GetProductsCount()
+        {
+            return _context.Products.Count();
+        }
+
+        public List<Product> GetProductsBasedOnSearch(string searchText, int pageSize, int pageIndex)
+        {
+            int skipSize = CalculateSkipSize(pageSize, pageIndex);
+            var products = _context.Products.Where(item => item.Name.Contains(searchText)).OrderBy(product => product.Id).Skip(skipSize).Take(pageSize).ToList();
+            return products;
+        }
+
+        private int CalculateSkipSize(int pageSize, int pageIndex)
+        {
+            return (pageIndex - 1) * pageSize;
+        }
+
+        public int GetSearchMatchingProductsCount(string searchText)
+        {
+            return _context.Products.Where(product => product.Name.Contains(searchText)).Count();
         }
     }
 }

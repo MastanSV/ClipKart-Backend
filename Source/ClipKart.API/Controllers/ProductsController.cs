@@ -34,7 +34,16 @@ namespace ClipKart.API.Controllers
         public IActionResult GetPaginationData(int pageSize, int pageIndex)
         {
             var products = _productService.GetPaginatedProducts(pageSize, pageIndex);
-            return Ok(new { message = $"Got paginated data successfully. page-size={pageSize}, page-index={pageIndex}", products = products });
+            var totalElementsCount = _productService.GetProductsCount();
+            return Ok(new { message = $"Got paginated data successfully", pageSize = pageSize, pageIndex = pageIndex, totalElements= totalElementsCount,  products = products });
+        }
+
+        [HttpGet("GetProducts/{searchText}/{pageSize}/{pageIndex}")]
+        public IActionResult GetProductsBasedOnSearch(string searchText, int pageSize, int pageIndex)
+        {
+            var products = _productService.GetProductsBasedOnSearch(searchText, pageSize, pageIndex);
+            var totalSearchMatchingElementsCount = _productService.GetSearchMatchingProductsCount(searchText);
+            return Ok(new {message = $"products fetched successfully with matching text - {searchText}", products = products, totalSearchMatchingElementsCount = totalSearchMatchingElementsCount});
         }
     }
 }
