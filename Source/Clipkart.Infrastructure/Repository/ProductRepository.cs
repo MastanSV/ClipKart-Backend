@@ -39,7 +39,7 @@ namespace Clipkart.Infrastructure.Repository
         public List<Product> GetProductsBasedOnSearch(string searchText, int pageSize, int pageIndex)
         {
             int skipSize = CalculateSkipSize(pageSize, pageIndex);
-            var products = _context.Products.Where(item => item.Name.Contains(searchText)).OrderBy(product => product.Id).Skip(skipSize).Take(pageSize).ToList();
+            var products = _context.Products.Where(item => item.Name.ToLower().Contains(searchText.ToLower())).OrderBy(product => product.Id).Skip(skipSize).Take(pageSize).ToList();
             return products;
         }
 
