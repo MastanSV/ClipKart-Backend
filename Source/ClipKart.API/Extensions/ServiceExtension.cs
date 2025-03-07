@@ -16,12 +16,15 @@ namespace ClipKart.API.Extensions
             services.AddSingleton<IJWTTokenGenerator, JWTTokenGenerator>();
 
             services.AddScoped<IUserLoginService, UserLoginService>();
+            services.AddScoped<IUserSignupService, UserSignupService>();
             services.AddScoped<IProductService, ProductService>();
 
             services.AddTransient<IUserLoginRepository, UserLoginRepository>();
+            services.AddScoped<IUserSignupRepository, UserSignupRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
 
             return services;
         }
     }
+
 }

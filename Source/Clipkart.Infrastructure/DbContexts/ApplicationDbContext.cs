@@ -14,5 +14,7 @@ namespace Clipkart.Infrastructure.DbContexts
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<SignupUser> SignupUsers { get; set; }
+
     }
 }
