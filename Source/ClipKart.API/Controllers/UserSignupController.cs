@@ -22,7 +22,6 @@ namespace ClipKart.API.Controllers
                 return BadRequest("Bad Request sent!.");
             }
 
-            _
             return Ok();
         }
     }
