@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ClipKart.API.Controllers
 {
-    [Controller]
+    [ApiController]
+    [Route("api/[controller]")]
     public class UserSignupController : ControllerBase
     {
         private IUserSignupService _userSignupService;
@@ -14,15 +15,19 @@ namespace ClipKart.API.Controllers
             _userSignupService = userSignupService;
         }
 
-        [HttpPost]
+        [HttpPost("Signup")]
         public IActionResult Signup([FromBody]SignupUser signUpUser)
         {
             if (!ModelState.IsValid) 
             { 
                 return BadRequest("Bad Request sent!.");
             }
+            if (_userSignupService.SignupUser(signUpUser))
+            {
+                return Ok(new { message = "user signedup successfully.!" });
+            }
 
-            return Ok();
+            return BadRequest("Error occured while registering the user!.");
         }
     }
 }

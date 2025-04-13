@@ -1,4 +1,5 @@
 ﻿using ClipKart.Core.Interfaces.UserLogin;
+using ClipKart.Core.Models;
 
 namespace ClipKart.Core.Services
 {
@@ -9,6 +10,12 @@ namespace ClipKart.Core.Services
         public UserSignupService(IUserSignupRepository userSignupRepository)
         {
             _userSignupRepository = userSignupRepository;
+        }
+
+        public bool SignupUser(SignupUser user)
+        {
+            _userSignupRepository.SignupUser(user);
+            return true;
         }
     }
 }
